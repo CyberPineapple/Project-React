@@ -11,6 +11,7 @@
     width: 350px;
     height: 90%;
     overflow-y: scroll;
+    overflow-wrap: break-word;
 }
 
 .input{
@@ -26,6 +27,7 @@ textarea{
     height: 100%;
     width: 70%;
     resize: none;
+    overflow-wrap: break-word;
 }
 
 button{
