@@ -10,7 +10,7 @@
 .output{
     width: 350px;
     height: 90%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-wrap: break-word;
 }
 
@@ -42,4 +42,23 @@ button{
 button:active{
   background-color: black;
   color: white;
+}
+
+
+.message{
+    border-bottom: 3px solid black;
+}
+
+.message:focus{
+    background-color: red;
+}
+
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+.Click{
+    background-color: red;
 }

@@ -6,16 +6,34 @@ export default class App extends React.Component {
         super();
         this.state = {
             value: '',
-            list: []
+            list: [],
+            click: "message"
         }
     }
 
+
+    // clearMessage = () =>{
+
+    //     this.state.value = '/clear';
+    //     this.setState({list: []});
+    // };
+
+
+
+    onClickMessage = () => {
+        this.setState({
+               click: "Click" 
+        })
+    };
+
+
+
     onClickHandler = () => {
-        this.setState( prevState => {
+        this.setState(prevState => {
             return {
                 list: prevState.list.concat(this.state.value),
                 value: ''
-            } 
+            }
         })
     };
 
@@ -25,33 +43,37 @@ export default class App extends React.Component {
         })
     };
 
+
+
+
+
     render() {
-        const { value, list } = this.state;
+        const { value, list, click } = this.state;
         let arr = [];
-        for ( let index in list) {
+        for (let index in list) {
             var temp = (
-            <li key={ index }>
-                { list[index] }
-            </li>)
+                <div className={click} key={index} onClick={() => this.onClickMessage()}>
+                    {list[index]}
+                </div>)
             arr.push(temp);
         }
 
         return (
             <div className="app">
                 <div className="output">
-                    <ul>
-                        { arr }
-                    </ul>
+                    <div className="container-message">
+                        {arr}
+                    </div>
                 </div>
                 <div className="input">
-                 <textarea
+                    <textarea
                         value={value}
                         onChange={(event) => this.handleChange(event)}
                     />
-                
-                <button onClick={() => this.onClickHandler()}>Отправить</button>
+
+                    <button onClick={() => this.onClickHandler()}>Отправить</button>
+                </div>
             </div>
-        </div>
         );
     }
 }
