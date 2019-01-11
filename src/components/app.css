@@ -1,0 +1,43 @@
+
+.app{
+    margin: auto;
+    height: 600px;
+    width: 350px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.output{
+    width: 350px;
+    height: 90%;
+    overflow-y: scroll;
+}
+
+.input{
+    position: relative;
+    width: 350px;
+    height: 10%;
+}
+
+textarea{
+    outline: none;
+    right: 30%;
+    box-sizing: border-box;
+    height: 100%;
+    width: 70%;
+    resize: none;
+}
+
+button{
+    box-sizing: border-box;
+    position: absolute;
+    left: 70%;
+    height: 100%;
+    width: 30%;
+    outline: none;
+}
+
+button:active{
+  background-color: black;
+  color: white;
+}
