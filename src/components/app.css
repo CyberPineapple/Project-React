@@ -3,20 +3,21 @@
     margin: auto;
     height: 600px;
     width: 350px;
-    border: 3px solid black;
-    border-radius: 5px;
+    /* border: 3px solid black;
+    border-radius: 5px; */
+    background-color: grey;
 }
 
 .output{
-    width: 350px;
+    padding: 10px;
     height: 90%;
     overflow-y: auto;
     overflow-wrap: break-word;
 }
 
 .input{
+    margin: 0;
     position: relative;
-    width: 350px;
     height: 10%;
 }
 
@@ -44,13 +45,14 @@ button:active{
   color: white;
 }
 
-
-.message{
-    border-bottom: 3px solid black;
+.message-container{
+    width: 90%;
 }
 
-.message:focus{
-    background-color: red;
+.message{
+    margin: 0;
+    width: 100%;
+    border-bottom: 3px solid black;
 }
 
 
@@ -61,4 +63,9 @@ button:active{
 
 .Click{
     background-color: red;
+}
+
+*{
+    margin: 0;
+    padding: 0;
 }
