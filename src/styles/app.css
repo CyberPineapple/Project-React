@@ -1,32 +1,40 @@
 
 .app{
-    
+    display: flex;
+    flex-direction: column;
     margin: auto;
     height: 600px;
     width: 350px;
-    /* border: 3px solid black;
-    border-radius: 5px; */
+    outline: 3px solid black;
     background-color: grey;
     margin-top: 20px;
+    margin-bottom: 20px;
+    border: 3px solid black;
+    outline-offset: 3px;
+    background: linear-gradient(45deg, black, white, black)
+
 }
 
 .output{
-    padding: 10px;
+    margin: 5px;
     height: 90%;
     overflow-y: auto;
     overflow-wrap: break-word;
+    background-color: white;
+    opacity: 0.5;
 }
 
 .input{
-    margin: 0;
-    position: relative;
+    display: flex;
     height: 10%;
+    margin: 5px;
+    outline: 3px solid black;
+    
+
 }
 
 textarea{
     outline: none;
-    right: 30%;
-    box-sizing: border-box;
     height: 100%;
     width: 70%;
     resize: none;
@@ -34,12 +42,11 @@ textarea{
 }
 
 button{
-    box-sizing: border-box;
-    position: absolute;
-    left: 70%;
-    height: 100%;
-    width: 30%;
+    width: auto;
+    height: auto;
+    flex: 1 1 auto;
     outline: none;
+    opacity: 0.5;
 }
 
 button:active{
@@ -48,12 +55,14 @@ button:active{
 }
 
 .message-container{
+    opacity: 1;
     width: 90%;
 }
 
 .message{
-    margin: 0;
-    width: 100%;
+    color: black;
+    margin: auto;
+    width: 90%;
     border-bottom: 3px solid black;
 }
 

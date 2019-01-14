@@ -1,5 +1,4 @@
 import React from 'react';
-import "../styles/app.css";
 import Output from './output.js';
 
 
@@ -38,9 +37,9 @@ export default class App extends React.Component {
     };
 
     onChange = (event) => {
-        this.setState({
-            value: event.target.value
-        })
+             this.setState({
+                 value: event.target.value
+            })
     };
 
 
