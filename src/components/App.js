@@ -1,5 +1,7 @@
 import React from 'react';
-import "./app.css"
+import "../styles/app.css";
+import Output from './output.js';
+
 
 export default class App extends React.Component {
     constructor() {
@@ -7,28 +9,26 @@ export default class App extends React.Component {
         this.state = {
             value: '',
             list: [],
-            click: "message"
+            // item: '',
+            // selectedItem: [],
+            // click: ''
         }
     }
 
 
-    // clearMessage = () =>{
 
-    //     this.state.value = '/clear';
-    //     this.setState({list: []});
+
+
+    // onClickMessage = (event) => {
+    //     this.setState({
+    //             click: "Click"
+    //     })
     // };
 
 
 
-    onClickMessage = () => {
-        this.setState({
-               click: "Click" 
-        })
-    };
+    onClick = () => {
 
-
-
-    onClickHandler = () => {
         this.setState(prevState => {
             return {
                 list: prevState.list.concat(this.state.value),
@@ -37,7 +37,7 @@ export default class App extends React.Component {
         })
     };
 
-    handleChange = (event) => {
+    onChange = (event) => {
         this.setState({
             value: event.target.value
         })
@@ -48,32 +48,20 @@ export default class App extends React.Component {
 
 
     render() {
-        const { value, list, click } = this.state;
-        let arr = [];
-        for (let index in list) {
-            var temp = (
-                <div className={click} key={index} onClick={() => this.onClickMessage()}>
-                    {list[index]}
-                </div>)
-            arr.push(temp);
-        }
-
+        const { list } = this.state;
+        const arr = list.map((data, id) =>
+            <div className="message" key={id}>
+                {data}
+            </div>
+        )
         return (
             <div className="app">
-                <div className="output">
-                    <div className="container-message">
-                        {arr}
-                    </div>
-                </div>
+                <Output arrayMessage={arr}/>
                 <div className="input">
-                    <textarea
-                        value={value}
-                        onChange={(event) => this.handleChange(event)}
-                    />
-
-                    <button onClick={() => this.onClickHandler()}>Отправить</button>
+                    <textarea value={this.state.value} onChange={(event)=>this.onChange(event)}></textarea>
+                    <button onClick={()=>this.onClick()}>Отправить</button>
                 </div>
             </div>
-        );
+        )
     }
 }

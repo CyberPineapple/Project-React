@@ -1,11 +1,13 @@
 
 .app{
+    
     margin: auto;
     height: 600px;
     width: 350px;
     /* border: 3px solid black;
     border-radius: 5px; */
     background-color: grey;
+    margin-top: 20px;
 }
 
 .output{
