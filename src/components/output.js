@@ -9,6 +9,8 @@ export default class Output extends React.Component {
         }
     }
     onClickHandler = () => () => {
+        const clear = this.props.clearValue;
+        clear(this.state.clickedMessage); //hook
         this.setState({
             clickedMessage: !this.state.clickedMessage
         })
