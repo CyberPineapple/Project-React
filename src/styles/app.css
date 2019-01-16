@@ -80,7 +80,3 @@ button:active{
     margin: 0;
     padding: 0;
 }
-
-.clicked {
-    background-color: red;
-}
