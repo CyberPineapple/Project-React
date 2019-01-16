@@ -5,14 +5,12 @@
     margin: auto;
     height: 600px;
     width: 350px;
-    outline: 3px solid black;
     background-color: grey;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 3px solid black;
-    outline-offset: 3px;
-    background: linear-gradient(45deg, black, white, black)
-
+    border-radius: 3px;
+    background: linear-gradient(purple, darkblue); 
 }
 
 .output{
