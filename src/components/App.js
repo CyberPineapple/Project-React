@@ -27,11 +27,6 @@ export default class App extends React.Component {
                     list: []
                 });
                 break;
-            case '\n/clear':
-                this.setState({
-                    list: []
-                });
-                break;
             default:
             this.setState(prevState => {
                 return {
