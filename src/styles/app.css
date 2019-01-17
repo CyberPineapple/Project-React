@@ -72,7 +72,7 @@ button:active{
     display: none;
 }
 
-.Click{
+.clicked{
     background-color: red;
 }
 

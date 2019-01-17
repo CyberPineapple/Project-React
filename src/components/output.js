@@ -15,7 +15,7 @@ export default class Output extends React.Component {
     }
 
     render() {
-        const {value, key} = this.props;
+        const {value, key, } = this.props;
         const {clickedMessage} = this.state;
         let className = "message";
         if (clickedMessage) {
