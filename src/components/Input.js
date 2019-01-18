@@ -16,8 +16,7 @@ export default class Input extends React.Component {
 
     onClick = () => {
         if (this.state.value !== ''){
-            const Send = this.props.addValue;
-            Send(this.state.value);
+            this.props.addValue(this.state.value);
             this.setState({
                 value: ''
             }); 

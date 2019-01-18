@@ -13,11 +13,12 @@ export default class Output extends React.Component {
         this.setState({
             clickedMessage: !this.state.clickedMessage
         })
+        console.log(this.state.key);
     };
 
     onClickDelete = () => {
-        const { key, clearMessage} = this.props;
-        clearMessage(key);
+        const deleteMessage = this.props.clearMessage;
+        deleteMessage(this.props.key);
     };
 
     render() {

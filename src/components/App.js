@@ -21,11 +21,12 @@ export default class App extends React.Component {
 
 
     clearMessage = (number) => {
+        console.log(number);
         let arr = this.state.list;
         console.log(arr);
-        delete arr[number];
+        arr = arr.splice(number, 1);
         console.log(arr);
-        this.state({
+        this.setState({
             list: arr
         })
     };
@@ -72,7 +73,7 @@ export default class App extends React.Component {
         const { list } = this.state;
         const arr = list.map((data, id) =>
             <div className="container-message">
-                <Output value={data} key={id} />
+                <Output value={data} key={id} clearMessage={this.clearMessage}/>
             </div>
         )
 
@@ -81,7 +82,7 @@ export default class App extends React.Component {
                 <div className="output">
                     {arr}
                 </div>
-                <Input addValue={this.getValue} clearMessage={this.clearMessage}/>
+                <Input addValue={this.getValue} />
             </div>
         )
     }
