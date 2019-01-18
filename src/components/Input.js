@@ -30,6 +30,40 @@ export default class Input extends React.Component {
             value: event.target.value
         })
     };
+
+    getValue = (addValue) => {
+        // this.requestToSplashbase();
+        if (addValue[0] !== '/') {
+            this.setState(prevState => {
+                return {
+                    list: prevState.list.concat(addValue)
+                }
+            });
+        } else {
+            let command = addValue.substring(0, addValue.indexOf('_', 2));
+            let flag = addValue.substr((addValue.indexOf('_', 2) + 1));
+            if (command && flag) {
+                switch (command) {
+                    case '/clear':
+                        if (flag === 'all') {
+                            this.setState({
+                                list: []
+                            })
+                        } else if (flag === 'last') {
+                            let arr = this.state.list;
+                            arr.pop();
+                            this.setState({
+                                list: arr
+                            });
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    };
+
     render() {
 
         return (

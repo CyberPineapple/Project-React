@@ -76,7 +76,20 @@ button:active{
     background-color: red;
 }
 
+
+.messageButton{
+    display: none;
+}
+
+.messageButton-click{
+    font-size: 20px;
+    display: block;
+    float: right;
+    outline: none;
+}
+
 *{
     margin: 0;
     padding: 0;
 }
+
