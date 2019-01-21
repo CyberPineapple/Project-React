@@ -13,29 +13,33 @@ export default class Output extends React.Component {
         this.setState({
             clickedMessage: !this.state.clickedMessage
         })
-        console.log(this.state.key);
     };
 
     onClickDelete = () => {
-        const deleteMessage = this.props.clearMessage;
-        deleteMessage(this.props.key);
+        const { index, clearMessage } = this.props;
+        clearMessage(index);
     };
 
     render() {
-        const {value, key } = this.props;
-        const {clickedMessage} = this.state;
+        let { value } = this.props;
+        const {clickedMessage, key} = this.state;
         let className = "message";
         let classButton = "messageButton"
         if (clickedMessage) {
             className += " clicked";
-            classButton = "messageButton-click"
+            classButton = "message-button-click"
+        }
+
+        if (value.substr(0, 4) == 'url_'){
+            let url = value.substr((value.indexOf('_', 2) + 1));
+            value = <img src={url} className='app-picture'></img>
         }
         
 
         return (
             <div className={className} key={key} onClick={this.onClickHandler()}>
                 {value}
-                <button className={classButton} onClick={()=>this.onClickDelete()}>—</button>
+                <div className={classButton} onClick={()=>this.onClickDelete()}></div>
             </div>
         );
     }

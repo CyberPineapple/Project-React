@@ -8,19 +8,53 @@ export default class Input extends React.Component {
         }
     }
     
-    onClickEnter = (e) => {
-        if (e.key === 'Enter'){
-            this.onClick();
+
+
+
+    handlerCommand = () => {
+        let { value } = this.state;
+        let command = value.substring(0, value.indexOf('_', 2));
+        let flag = value.substr((value.indexOf('_', 2) + 1));
+        switch (command){
+            case '/pic':
+                if (flag){
+                    this.props.addPicture(this.requestToSplashbase(flag));
+                    this.setState({
+                        value: ''
+                    })
+                }
+                break;
+            default:
+                break;             
+        }
+    };
+
+    requestToSplashbase = (flag) => {
+        let request = new XMLHttpRequest();
+        request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
+        request.send();
+        if (request.responseText){
+            let a = JSON.parse(request.responseText)
+            return (a.images[0].url);
         }
     };
 
     onClick = () => {
-        if (this.state.value !== ''){
-            this.props.addValue(this.state.value);
+        let { value } = this.state;
+        if (value[0] == '/'){
+            this.handlerCommand();
+        } else if (value !== ''){
+            this.props.addValue(value);
             this.setState({
                 value: ''
             }); 
         }     
+    };
+
+    onClickEnter = (e) => {
+        if (e.key === 'Enter'){
+            this.onClick();
+        }
     };
 
     onChange = (event) => {
@@ -30,45 +64,12 @@ export default class Input extends React.Component {
         })
     };
 
-    getValue = (addValue) => {
-        // this.requestToSplashbase();
-        if (addValue[0] !== '/') {
-            this.setState(prevState => {
-                return {
-                    list: prevState.list.concat(addValue)
-                }
-            });
-        } else {
-            let command = addValue.substring(0, addValue.indexOf('_', 2));
-            let flag = addValue.substr((addValue.indexOf('_', 2) + 1));
-            if (command && flag) {
-                switch (command) {
-                    case '/clear':
-                        if (flag === 'all') {
-                            this.setState({
-                                list: []
-                            })
-                        } else if (flag === 'last') {
-                            let arr = this.state.list;
-                            arr.pop();
-                            this.setState({
-                                list: arr
-                            });
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    };
-
     render() {
 
         return (
             <div className="input">
                 <textarea value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
-                <button onClick={() => this.onClick()}>Отправить</button>
+                <button className="input-button" onClick={() => this.onClick()}>Отправить</button>
             </div>
         )
     }

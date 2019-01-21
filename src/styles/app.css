@@ -18,8 +18,12 @@
     height: 90%;
     overflow-y: auto;
     overflow-wrap: break-word;
-    background-color: white;
-    opacity: 0.5;
+}
+
+.output-opacity{
+    
+    margin: 5px;
+    height: 90%;
 }
 
 .input{
@@ -61,11 +65,13 @@ button:active{
 }
 
 .message{
-    color: black;
+    color: #ffffffc4;
     margin: auto;
     width: 90%;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #ffffffc4;
     font-size: 20px;
+    display: flex;
+    position: relative;
 }
 
 ::-webkit-scrollbar{
@@ -73,7 +79,7 @@ button:active{
 }
 
 .clicked{
-    background-color: red;
+    background-color: rgba(154, 205, 50, 0.5);
 }
 
 
@@ -81,11 +87,20 @@ button:active{
     display: none;
 }
 
-.messageButton-click{
-    font-size: 20px;
-    display: block;
-    float: right;
-    outline: none;
+.message-button-click{
+    position: absolute;
+    left: 92%;
+    width: 23px;
+    height: 23px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Nuvola_apps_error.svg/768px-Nuvola_apps_error.svg.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.app-picture{
+    width: 100%;
+    height: 25%;
 }
 
 *{

@@ -19,49 +19,23 @@ export default class App extends React.Component {
     //     console.log(a.images[1].url);
     // }
 
+    addPicture = (url) => {
+        this.setState(prevState => {
+            return {
+                list: prevState.list.concat('url_' + url)
+            }
+        })
+    };
 
     clearMessage = (number) => {
-        console.log(number);
-        let arr = this.state.list;
-        console.log(arr);
-        arr = arr.splice(number, 1);
-        console.log(arr);
+       let { list } = this.state;
+       list.splice(number, 1);
         this.setState({
-            list: arr
+            list: list
         })
     };
 
     getValue = (addValue) => {
-        // // this.requestToSplashbase();
-        // if (addValue[0] !== '/') {
-        //     this.setState(prevState => {
-        //         return {
-        //             list: prevState.list.concat(addValue)
-        //         }
-        //     });
-        // } else {
-        //     let command = addValue.substring(0, addValue.indexOf('_', 2));
-        //     let flag = addValue.substr((addValue.indexOf('_', 2) + 1));
-        //     if (command && flag) {
-        //         switch (command) {
-        //             case '/clear':
-        //                 if (flag === 'all') {
-        //                     this.setState({
-        //                         list: []
-        //                     })
-        //                 } else if (flag === 'last') {
-        //                     let arr = this.state.list;
-        //                     arr.pop();
-        //                     this.setState({
-        //                         list: arr
-        //                     });
-        //                 }
-        //                 break;
-        //             default:
-        //                 break;
-        //         }
-        //     }
-        // }
         this.setState(prevState => {
             return {
                 list: prevState.list.concat(addValue)
@@ -73,17 +47,21 @@ export default class App extends React.Component {
         const { list } = this.state;
         const arr = list.map((data, id) =>
             <div className="container-message">
-                <Output value={data} key={id} clearMessage={this.clearMessage}/>
+                <Output value={data} index={id} clearMessage={this.clearMessage} />
             </div>
         )
 
         return (
-            <div className="app">
-                <div className="output">
-                    {arr}
+            <div>
+                <div className="app">
+                    <div className="output">
+                        {arr}
+                    </div>
+                    <Input addValue={this.getValue} addPicture={this.addPicture}/>
                 </div>
-                <Input addValue={this.getValue} />
+                <div className="menu"></div>
             </div>
+            
         )
     }
 }
