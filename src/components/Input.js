@@ -33,9 +33,11 @@ export default class Input extends React.Component {
         let request = new XMLHttpRequest();
         request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
         request.send();
-        if (request.responseText){
-            let a = JSON.parse(request.responseText)
+        let a = JSON.parse(request.responseText)
+        if (a.images[0] != undefined){
             return (a.images[0].url);
+        } else {
+            return ('http://roboforex-com.com/Kartinki/Forex/Razvod/650722-2818502072.jpg');
         }
     };
 

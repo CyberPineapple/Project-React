@@ -1,5 +1,5 @@
 import React from 'react';
-import Output from './Output.js';
+import Output from './output.js';
 import Input from './Input.js';
 // http://www.splashbase.co/api/v1/images/search?query=
 export default class App extends React.Component {
