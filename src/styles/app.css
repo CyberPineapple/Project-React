@@ -60,6 +60,7 @@ button:active{
 }
 
 .message-container{
+    margin: auto;
     opacity: 1;
     width: 90%;
 }
@@ -96,6 +97,10 @@ button:active{
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.picture{
+    display: none;
 }
 
 .app-picture{

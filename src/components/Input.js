@@ -8,7 +8,14 @@ export default class Input extends React.Component {
         }
     }
     
-
+    render() {
+        return (
+            <div className="input">
+                <textarea value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
+                <button className="input-button" onClick={() => this.onClick()}>Отправить</button>
+            </div>
+        )
+    }
 
 
     handlerCommand = () => {
@@ -32,18 +39,17 @@ export default class Input extends React.Component {
     requestToSplashbase = (flag) => {
         let request = new XMLHttpRequest();
         request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
-        request.send();
-        let a = JSON.parse(request.responseText)
-        if (a.images[0] != undefined){
-            return (a.images[0].url);
+        let a = JSON.parse(request.responseText);
+        if (a.images ){
+            return 'https://failopomoika.com/forums/monthly_03_2015/user40498/post1242227_img1_1_8742f08ce00fd82f482b9dbed019166c.jpg';
         } else {
-            return ('http://roboforex-com.com/Kartinki/Forex/Razvod/650722-2818502072.jpg');
+            return a.images[0].url;
         }
     };
 
     onClick = () => {
         let { value } = this.state;
-        if (value[0] == '/'){
+        if (value[0] === '/'){
             this.handlerCommand();
         } else if (value !== ''){
             this.props.addValue(value);
@@ -66,13 +72,4 @@ export default class Input extends React.Component {
         })
     };
 
-    render() {
-
-        return (
-            <div className="input">
-                <textarea value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
-                <button className="input-button" onClick={() => this.onClick()}>Отправить</button>
-            </div>
-        )
-    }
 }

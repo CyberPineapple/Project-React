@@ -1,46 +1,20 @@
 import React from 'react';
+import MessagesContainer from './MessagesContainer.js';
+import PictureContainer from './PictureContainer.js';
 
-export default class Output extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            value: '',
-            clickedMessage: false
-        }
-    }
+export default class Output extends React.Component{
 
-    onClickHandler = () => () => {
-        this.setState({
-            clickedMessage: !this.state.clickedMessage
-        })
-    };
-
-    onClickDelete = () => {
-        const { index, clearMessage } = this.props;
-        clearMessage(index);
-    };
-
-    render() {
-        let { value } = this.props;
-        const {clickedMessage, key} = this.state;
-        let className = "message";
-        let classButton = "messageButton"
-        if (clickedMessage) {
-            className += " clicked";
-            classButton = "message-button-click"
-        }
-
-        if (value.substr(0, 4) == 'url_'){
-            let url = value.substr((value.indexOf('_', 2) + 1));
-            value = <img src={url} className='app-picture'></img>
-        }
-        
-
-        return (
-            <div className={className} key={key} onClick={this.onClickHandler()}>
-                {value}
-                <div className={classButton} onClick={()=>this.onClickDelete()}></div>
+    render(){
+        return(
+            <div className='output'>
+                <MessagesContainer value={this.props.value} />
+                <PictureContainer />
             </div>
-        );
+        )
     }
+
+
+
+
+
 }
