@@ -11,13 +11,21 @@ export default class MessagesContainer extends React.Component{
     }
 
     render(){
-        console.log(this.props.value);
-        
-        return (
-            <div className='message-container'>
-            </div>
-        )
+        let { value } = this.props;
+        console.log(this.state.list);
+            return (
+                <div className='message-container'>
+                    <Message value={value} addMessageOnList={this.addMessageOnList}/>
+                </div>
+                )
     };
+
+    addMessageOnList = (value) =>
+        this.setState(prevState => {
+            return {
+                list: prevState.list.concat(value)
+            }
+        });
 
 }
 

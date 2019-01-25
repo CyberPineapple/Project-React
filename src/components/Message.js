@@ -9,7 +9,12 @@ export default class Message extends React.Component {
         }
     }
 
+    componentDidMount(){
+        this.props.addMessageOnList(this.props.value);
+    };
+
     render() {
+        
         let { value } = this.props;
         const {clickedMessage, key} = this.state;
         let className = "message";
@@ -18,11 +23,10 @@ export default class Message extends React.Component {
             className += " clicked";
             classButton = "message-button-click"
         }
-
-        // if (value.substr(0, 4) == 'url_'){
-        //     let url = value.substr((value.indexOf('_', 2) + 1));
-        //     value = <img src={url} className='app-picture'></img>
-        // }
+        if (value.substr(0, 4) == 'url_'){
+            let url = value.substr((value.indexOf('_', 2) + 1));
+            value = <img src={url} className='app-picture'></img>
+        }
         
 
         return (
