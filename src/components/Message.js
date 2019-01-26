@@ -9,10 +9,6 @@ export default class Message extends React.Component {
         }
     }
 
-    componentDidMount(){
-        this.props.addMessageOnList(this.props.value);
-    };
-
     render() {
         
         let { value } = this.props;
@@ -25,7 +21,7 @@ export default class Message extends React.Component {
         }
         if (value.substr(0, 4) == 'url_'){
             let url = value.substr((value.indexOf('_', 2) + 1));
-            value = <img src={url} className='app-picture'></img>
+            value = <img src={url} className='message-picture'></img>
         }
         
 
@@ -44,8 +40,8 @@ export default class Message extends React.Component {
     };
 
     onClickDelete = () => {
-        const { index, clearMessage } = this.props;
-        clearMessage(index);
+        const { key, clearMessage } = this.props;
+        clearMessage(key);
     };
 
 

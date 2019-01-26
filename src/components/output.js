@@ -5,13 +5,16 @@ import PictureContainer from './PictureContainer.js';
 export default class Output extends React.Component{
 
     render(){
+        let { listMessage } = this.props;
+        const { clearMessage } = this.props;
+
         return(
             <div className='output'>
-                <MessagesContainer value={this.props.value} />
+                <MessagesContainer listMessage={listMessage} clearMessage={clearMessage} />
                 <PictureContainer />
             </div>
         )
-    }
+    };
 
 
 

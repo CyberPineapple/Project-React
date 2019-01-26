@@ -66,10 +66,10 @@ button:active{
 }
 
 .message{
-    color: #ffffffc4;
+    color: #f8f18fc4;
     margin: auto;
     width: 90%;
-    border-bottom: 3px solid #ffffffc4;
+    border-bottom: 3px solid #f8f18fc4;
     font-size: 20px;
     display: flex;
     position: relative;
@@ -99,14 +99,15 @@ button:active{
     background-repeat: no-repeat;
 }
 
-.picture{
+.picture-container{
     display: none;
 }
 
-.app-picture{
+.message-picture{
     width: 100%;
     height: 200px;
 }
+
 
 *{
     margin: 0;

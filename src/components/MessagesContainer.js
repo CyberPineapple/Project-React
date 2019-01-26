@@ -3,30 +3,21 @@ import Message from './Message.js'
 
 
 export default class MessagesContainer extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            list: []
-        }
-    }
 
     render(){
-        let { value } = this.props;
-        console.log(this.state.list);
-            return (
-                <div className='message-container'>
-                    <Message value={value} addMessageOnList={this.addMessageOnList}/>
-                </div>
-                )
+        let { listMessage } = this.props;
+        const { clearMessage } = this.props;
+        
+        const arr = listMessage.map((data, id) => {
+            return <Message value={data} key={id.toString()} clearMessage={clearMessage} />
+        })
+
+        return (
+            <div className='message-container'>
+                {arr}
+            </div>
+        )
     };
-
-    addMessageOnList = (value) =>
-        this.setState(prevState => {
-            return {
-                list: prevState.list.concat(value)
-            }
-        });
-
 }
 
     // addPicture = (url) => {
