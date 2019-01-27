@@ -24,17 +24,23 @@ export default class Input extends React.Component {
         switch (command){
             case '/pic':
                 if (flag){
-                    this.props.addPicture(this.requestToSplashbase(flag));
+                    this.props.getItem({
+                        'value': this.requestToSplashbase(flag),
+                        'pic': true,
+                        'id': Date.now()
+                    });
                     this.setState({
                         value: ''
                     });
                 }
                 break;
             case '/clear':
-                this.props.clearMessage(flag);
-                this.setState({
-                    value: ''
-                });
+                if (flag === 'all'){
+                    this.props.deleteItem(flag);
+                    this.setState({
+                        value: ''
+                    });
+                }
                 break;
             default:
                 break;             
@@ -46,7 +52,7 @@ export default class Input extends React.Component {
         request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
         request.send();
         let a = JSON.parse(request.responseText);
-        if (a.images[0] == undefined ){
+        if (a.images[0] === undefined ){
             return 'https://failopomoika.com/forums/monthly_03_2015/user40498/post1242227_img1_1_8742f08ce00fd82f482b9dbed019166c.jpg';
         } else {
             return a.images[0].url;
@@ -61,7 +67,11 @@ export default class Input extends React.Component {
                 value: ''
             });
         } else if (value !== ''){
-            this.props.addValue(value);
+            this.props.getItem({
+                'value': value,
+                'pic': false,
+                'id': Date.now()
+            });
             this.setState({
                 value: ''
             }); 

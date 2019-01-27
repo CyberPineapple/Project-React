@@ -6,53 +6,47 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            listMessage: [],
-            pictures: []
+            allItems: [],
         }
     }
 
     render() {
+        console.log(this.state.allItems);
         
         return (
             <div>
                 <div className="app">
-                    <Output listMessage={this.state.listMessage} picture={this.state.picture} clearMessage={this.clearMessage} />
-                    <Input addValue={this.getValue} addPicture={this.getPicture} clearMessage={this.clearMessage} />
+                    <Output allItems={this.state.allItems} deleteItem={this.deleteItem} />
+                    <Input getItem={this.getItem} deleteItem={this.deleteItem} />
                 </div>
                 <div className="menu"></div>
             </div>
             
-        )
+        );
     };
 
-    getValue = (data) => {
+    getItem = (data) => {
         this.setState(prevState =>{
             return {
-                listMessage: prevState.listMessage.concat(data)
+                allItems: prevState.allItems.concat(data)
             }
-        })
+        });
     };
 
-    getPicture = (url) => {
-        this.setState(prevState => {
-            return {
-                listMessage: prevState.listMessage.concat('url_' + url),
-                pictures: prevState.pictures.concat(url)
-            }
-        })
-    };
-
-    clearMessage = (key) => {
-        if (key == 'all'){
+    deleteItem = (valueDeleteItem) => {
+        if (valueDeleteItem === 'all'){
             this.setState({
-                listMessage: []
+                allItems: []
             })
         } else {
-            let { listMessage } = this.state;
-            let list = listMessage;
-            list = list.splice(key, 1);
+            let { allItems } = this.state;
+
+            const list = allItems.filter((currItem ,id, arr) => {
+                return id != arr.indexOf(valueDeleteItem);
+            });
+
             this.setState({
-                listMessage: list
+                allItems: list
             })
         };
     };

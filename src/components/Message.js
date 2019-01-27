@@ -4,30 +4,33 @@ export default class Message extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: '',
             clickedMessage: false
         }
     }
 
     render() {
-        
-        let { value } = this.props;
-        const {clickedMessage, key} = this.state;
-        let className = "message";
-        let classButton = "messageButton"
+        const { item } = this.props;
+        const { clickedMessage } = this.state;
+
+        let className = "message",
+            classButton = "messageButton",
+            itemContainer;
+
         if (clickedMessage) {
             className += " clicked";
             classButton = "message-button-click"
         }
-        if (value.substr(0, 4) == 'url_'){
-            let url = value.substr((value.indexOf('_', 2) + 1));
-            value = <img src={url} className='message-picture'></img>
+        
+        if (item.pic === false){
+            itemContainer = item.value;
+        } else if (item.pic === true){
+            itemContainer = <img src={item.value} className='message-picture'></img>;
         }
         
 
         return (
-            <div className={className} key={key} onClick={this.onClickHandler()}>
-                {value}
+            <div className={className} onClick={this.onClickHandler()}>
+                {itemContainer}
                 <div className={classButton} onClick={()=>this.onClickDelete()}></div>
             </div>
         );
@@ -40,8 +43,8 @@ export default class Message extends React.Component {
     };
 
     onClickDelete = () => {
-        const { key, clearMessage } = this.props;
-        clearMessage(key);
+        const { item, deleteItem } = this.props;
+        deleteItem(item);
     };
 
 
