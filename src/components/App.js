@@ -1,28 +1,35 @@
 import React from 'react';
 import Output from './Output.js';
 import Input from './Input.js';
+import Menu from './Menu.js';
 // http://www.splashbase.co/api/v1/images/search?query=
 export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
             allItems: [],
+            showPictures: false
         }
     }
 
     render() {
-        console.log(this.state.allItems);
-        
         return (
-            <div>
-                <div className="app">
-                    <Output allItems={this.state.allItems} deleteItem={this.deleteItem} />
+            <div className="app">
+                <div className="app-view">
+                    <Output allItems={this.state.allItems} deleteItem={this.deleteItem} 
+                        showPictures={this.state.showPictures} getItem={this.getItem} />
                     <Input getItem={this.getItem} deleteItem={this.deleteItem} />
                 </div>
-                <div className="menu"></div>
+                <Menu showPictureContainer={this.showPictureContainer} showPictures={this.state.showPictures} 
+                    deleteItem={this.deleteItem} getItem={this.getItem}/>
             </div>
-            
         );
+    };
+
+    showPictureContainer = () => {
+        this.setState({
+            showPictures: !this.state.showPictures
+        })
     };
 
     getItem = (data) => {
@@ -42,7 +49,7 @@ export default class App extends React.Component {
             let { allItems } = this.state;
 
             const list = allItems.filter((currItem ,id, arr) => {
-                return id != arr.indexOf(valueDeleteItem);
+                return id !== arr.indexOf(valueDeleteItem);
             });
 
             this.setState({

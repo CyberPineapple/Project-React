@@ -1,28 +1,59 @@
 
-.app{
+.app-view{
+    float: left;
     display: flex;
     flex-direction: column;
     margin: auto;
-    height: 600px;
-    width: 350px;
-    background-color: grey;
+    height: 100%;
+    width: 70%;
+}
+
+.app{
     margin-top: 20px;
     margin-bottom: 20px;
+    margin: auto;
+    height: 600px;
+    width: 500px;
     border: 3px solid black;
-    border-radius: 3px;
     background-image: url(https://s.poembook.ru/theme/36/3a/ce/29b6ab581f5ec62bf07713c974000f5559ba74fb.jpeg);
 }
 
-.output{
-    margin: 5px;
-    height: 90%;
-    overflow-y: auto;
-    overflow-wrap: break-word;
+.menu{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 29%;
+    border-left: 3px solid black;
 }
 
-.output-opacity{
-    
-    margin: 5px;
+.picture-container{
+    margin-top: 20px;
+    margin: auto;
+    width: 90%;
+    height: 95%;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.picture-on-container{
+    height: 100px;
+    width: 150px;
+    margin: 2px;
+}
+
+.menu-button{
+    padding: 5px;
+    height: 70px;
+}
+
+.output{ 
+    margin-top: 10px;
     height: 90%;
 }
 
@@ -31,38 +62,40 @@
     height: 10%;
     margin: 5px;
     outline: 3px solid black;
-    
-
 }
 
-textarea{
+.textarea-input{
     outline: none;
-    height: 100%;
+    height: 90%;
     width: 70%;
     resize: none;
     overflow-wrap: break-word;
 }
 
+.menu-textarea {
+    outline: none;
+    overflow-wrap: break-word;
+    resize: none;
+}
+
 button{
-    width: auto;
-    height: auto;
-    flex: 1 1 auto;
     outline: none;
     opacity: 0.5;
     font-size: 15px;
     font-family: fantasy; 
 }
 
-button:active{
-    opacity: 1;
-    background: linear-gradient(#fffeb1, rgb(245, 178, 225));
-    color: white;
+.input-button{
+    flex: 1 1 auto;
 }
 
 .message-container{
+    margin-top: 10px;
     margin: auto;
-    opacity: 1;
     width: 90%;
+    height: 95%;
+    overflow-y: auto;
+    overflow-wrap: break-word;
 }
 
 .message{
@@ -85,7 +118,12 @@ button:active{
 
 
 .messageButton{
-    display: none;
+    margin-top: 10px;
+    margin: auto;
+    width: 90%;
+    height: 95%;
+    overflow-y: auto;
+    overflow-wrap: break-word;
 }
 
 .message-button-click{
@@ -99,18 +137,10 @@ button:active{
     background-repeat: no-repeat;
 }
 
-.picture-container{
-    display: none;
-}
-
 .message-picture{
     width: 100%;
     height: 200px;
+    outline: 3px solid #f8f18f;
 }
 
-
-*{
-    margin: 0;
-    padding: 0;
-}
 

@@ -11,11 +11,15 @@ export default class Input extends React.Component {
     render() {
         return (
             <div className="input">
-                <textarea value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
+                <textarea className="textarea-input" value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
                 <button className="input-button" onClick={() => this.onClick()}>Отправить</button>
             </div>
         )
-    }
+    };
+
+    onClickPictureButton = () =>{
+
+    };
 
 
     handlerCommand = (value) => {

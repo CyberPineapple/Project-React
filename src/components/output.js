@@ -2,16 +2,21 @@ import React from 'react';
 import MessagesContainer from './MessagesContainer.js';
 import PictureContainer from './PictureContainer.js';
 
-export default class Output extends React.Component{
+export default class Output extends React.Component {
 
-    render(){
-        let { allItems } = this.props;
+    render() {
+        let { allItems, showPictures } = this.props;
         const { deleteItem } = this.props;
+        let showObject;
+        if (showPictures === true) {
+            showObject = <PictureContainer allItems={allItems} closePictureContainer={this.props.closePictureContainer} />;
+        } else if (showPictures === false) {
+            showObject = <MessagesContainer allItems={allItems} deleteItem={deleteItem} />;
+        }
 
-        return(
+        return (
             <div className='output'>
-                <MessagesContainer allItems={allItems} deleteItem={deleteItem} />
-                {/* <PictureContainer /> */}
+                {showObject}
             </div>
         )
     };
