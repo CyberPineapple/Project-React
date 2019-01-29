@@ -9,7 +9,8 @@ export default class Output extends React.Component {
         const { deleteItem } = this.props;
         let showObject;
         if (showPictures === true) {
-            showObject = <PictureContainer allItems={allItems} closePictureContainer={this.props.closePictureContainer} />;
+            showObject = <PictureContainer allItems={allItems} closePictureContainer={this.props.closePictureContainer} 
+                getItem={this.props.getItem}/>;
         } else if (showPictures === false) {
             showObject = <MessagesContainer allItems={allItems} deleteItem={deleteItem} />;
         }

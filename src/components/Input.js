@@ -17,11 +17,6 @@ export default class Input extends React.Component {
         )
     };
 
-    onClickPictureButton = () =>{
-
-    };
-
-
     handlerCommand = (value) => {
         let command = value.substring(0, value.indexOf('_', 2));
         let flag = value.substr((value.indexOf('_', 2) + 1));
