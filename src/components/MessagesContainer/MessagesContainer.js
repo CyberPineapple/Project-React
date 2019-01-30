@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from './Message.js'
+import Message from '../Messages/Message.js'
 
 
 export default class MessagesContainer extends React.Component{

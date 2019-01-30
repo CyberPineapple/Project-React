@@ -1,6 +1,6 @@
 import React from 'react';
-import MessagesContainer from './MessagesContainer.js';
-import PictureContainer from './PictureContainer.js';
+import MessagesContainer from '../MessagesContainer/MessagesContainer.js';
+import PictureContainer from '../PictureContainer/PictureContainer.js';
 
 export default class Output extends React.Component {
 

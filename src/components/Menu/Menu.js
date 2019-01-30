@@ -20,12 +20,14 @@ export default class Menu extends React.Component{
         }
 
         return (
-            <div className="menu">
-                <button className="menu-button" onClick={() => this.props.showPictureContainer()}>{text}</button>
-                <button className="menu-button" onClick={() => this.props.deleteItem('all')}>Очистить</button>
-                <textarea className="menu-textarea" value={this.state.value} onChange={(event)=>this.onChange(event)}
-                    onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
-                <button className="menu-button" onClick={() => this.onClick()}>Добавить картинку</button>
+            <div className="menu-view">
+                <div className="menu">
+                    <button className="menu-button" onClick={() => this.props.showPictureContainer()}>{text}</button>
+                    <button className="menu-button" onClick={() => this.props.deleteItem('all')}>Очистить</button>
+                    <textarea className="menu-textarea" value={this.state.value} onChange={(event)=>this.onChange(event)}
+                        onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
+                    <button className="menu-button" onClick={() => this.onClick()}>Добавить картинку</button>
+                </div>
             </div>
         )
     }

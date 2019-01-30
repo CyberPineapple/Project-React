@@ -1,5 +1,5 @@
 import React from 'react';
-import Picture from './Picture.js';
+import Picture from '../Picture/Picture.js';
 
 
 export default class PictureContainer extends React.Component{

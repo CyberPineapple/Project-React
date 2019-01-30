@@ -5,26 +5,42 @@
     flex-direction: column;
     margin: auto;
     height: 100%;
-    width: 70%;
+    width: 100%;
 }
 
 .app{
+    position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
     margin: auto;
     height: 600px;
-    width: 500px;
+    width: 350px;
     border: 3px solid black;
     background-image: url(https://s.poembook.ru/theme/36/3a/ce/29b6ab581f5ec62bf07713c974000f5559ba74fb.jpeg);
 }
+.menu-view{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right: 0;
+    background-image: url(https://cdn3.iconfinder.com/data/icons/common-icons-1/512/BT_menu-64.png);
+    background-color: #ff6600;
+    background-size: cover;
+}
 
-.menu{
-    float: right;
+.menu-view:hover .menu{
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 29%;
-    border-left: 3px solid black;
+}
+
+.menu{
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: #ff6600;
+    border: 2px solid black;
+    border-right: none;
 }
 
 .picture-container{
@@ -50,6 +66,8 @@
 .menu-button{
     padding: 5px;
     height: 70px;
+    background-color: #ff6600;
+    border: 2px solid #ff6600;
 }
 
 .output{ 
@@ -80,12 +98,12 @@
 
 button{
     outline: none;
-    opacity: 0.5;
     font-size: 15px;
     font-family: fantasy; 
 }
 
 .input-button{
+    opacity: 0.5;
     flex: 1 1 auto;
 }
 
@@ -104,8 +122,9 @@ button{
     width: 90%;
     border-bottom: 3px solid #f8f18fc4;
     font-size: 20px;
-    display: flex;
+    white-space: pre-wrap;
     position: relative;
+    display: flex;
 }
 
 ::-webkit-scrollbar{

@@ -1,7 +1,7 @@
 import React from 'react';
-import Output from './Output.js';
-import Input from './Input.js';
-import Menu from './Menu.js';
+import Output from './Output/Output.js';
+import Input from './Input/Input.js';
+import Menu from './Menu/Menu.js';
 // http://www.splashbase.co/api/v1/images/search?query=
 export default class App extends React.Component {
     constructor() {
