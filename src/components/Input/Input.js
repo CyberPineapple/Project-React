@@ -1,4 +1,6 @@
 import React from 'react';
+import input from './input.module.css';
+import axios from 'axios';
 
 export default class Input extends React.Component {
     constructor(){
@@ -10,9 +12,9 @@ export default class Input extends React.Component {
     
     render() {
         return (
-            <div className="input">
-                <textarea className="textarea-input" value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
-                <button className="input-button" onClick={() => this.onClick()}>Отправить</button>
+            <div className={input.layout}>
+                <textarea className={input.textarea} value={this.state.value} onChange={(event) => this.onChange(event)} onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
+                <button className={input.button} onClick={() => this.onClick()}>Отправить</button>
             </div>
         )
     };
@@ -23,11 +25,7 @@ export default class Input extends React.Component {
         switch (command){
             case '/pic':
                 if (flag){
-                    this.props.getItem({
-                        'value': this.requestToSplashbase(flag),
-                        'pic': true,
-                        'id': Date.now()
-                    });
+                    this.requestToSplashbase(flag);
                     this.setState({
                         value: ''
                     });
@@ -47,15 +45,17 @@ export default class Input extends React.Component {
     };
 
     requestToSplashbase = (flag) => {
-        let request = new XMLHttpRequest();
-        request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
-        request.send();
-        let a = JSON.parse(request.responseText);
-        if (a.images[0] === undefined ){
-            return 'https://failopomoika.com/forums/monthly_03_2015/user40498/post1242227_img1_1_8742f08ce00fd82f482b9dbed019166c.jpg';
-        } else {
-            return a.images[0].url;
-        }
+        axios.get('http://www.splashbase.co/api/v1/images/search?query=' + flag)
+        .then( response => {
+            this.props.getItem({
+                'value': response.data.images[0].url,
+                'pic': true,
+                'id': Date.now()
+            });
+        })
+        .catch( error => {
+            alert('error: ', error);
+        })
     };
 
     onClick = () => {

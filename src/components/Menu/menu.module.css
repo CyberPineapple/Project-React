@@ -1,0 +1,39 @@
+.textarea {
+    outline: none;
+    overflow-wrap: break-word;
+    resize: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.button{
+    padding: 5px;
+    height: 70px;
+    background-color: #ff6600;
+    border: 2px solid #ff6600;
+}
+
+.icon{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right: 0;
+    background-image: url(https://cdn3.iconfinder.com/data/icons/common-icons-1/512/BT_menu-64.png);
+    background-color: #ff6600;
+    background-size: cover;
+}
+
+.icon:hover .layout{
+    display: flex;
+    flex-direction: column;
+}
+
+.layout{
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: #ff6600;
+    border: 2px solid black;
+    border-right: none;
+}

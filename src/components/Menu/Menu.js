@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import menu from './menu.module.css';
 
 
 
@@ -20,39 +22,49 @@ export default class Menu extends React.Component{
         }
 
         return (
-            <div className="menu-view">
-                <div className="menu">
-                    <button className="menu-button" onClick={() => this.props.showPictureContainer()}>{text}</button>
-                    <button className="menu-button" onClick={() => this.props.deleteItem('all')}>Очистить</button>
-                    <textarea className="menu-textarea" value={this.state.value} onChange={(event)=>this.onChange(event)}
+            <div className={menu.icon}>
+                <div className={menu.layout}>
+                    <button className={menu.button} onClick={() => this.props.showPictureContainer()}>{text}</button>
+                    <button className={menu.button} onClick={() => this.props.deleteItem('all')}>Очистить</button>
+                    <textarea className={menu.textarea} value={this.state.value} onChange={(event)=>this.onChange(event)}
                         onKeyPress={(e)=>this.onClickEnter(e)}></textarea>
-                    <button className="menu-button" onClick={() => this.onClick()}>Добавить картинку</button>
+                    <button className={menu.button} onClick={() => this.onClick()}>Добавить картинку</button>
                 </div>
             </div>
         )
     }
 
+    // requestToSplashbase = (flag) => {
+    //     let request = new XMLHttpRequest();
+    //     request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
+    //     request.send();
+    //     let a = JSON.parse(request.responseText);
+    //     if (a.images[0] === undefined ){
+    //         return 'https://failopomoika.com/forums/monthly_03_2015/user40498/post1242227_img1_1_8742f08ce00fd82f482b9dbed019166c.jpg';
+    //     } else {
+    //         return a.images[0].url;
+    //     }
+    // };
+
     requestToSplashbase = (flag) => {
-        let request = new XMLHttpRequest();
-        request.open('GET', 'http://www.splashbase.co/api/v1/images/search?query=' + flag, false);
-        request.send();
-        let a = JSON.parse(request.responseText);
-        if (a.images[0] === undefined ){
-            return 'https://failopomoika.com/forums/monthly_03_2015/user40498/post1242227_img1_1_8742f08ce00fd82f482b9dbed019166c.jpg';
-        } else {
-            return a.images[0].url;
-        }
+        axios.get('http://www.splashbase.co/api/v1/images/search?query=' + flag)
+        .then( response => {
+            this.props.getItem({
+                'value': response.data.images[0].url,
+                'pic': true,
+                'id': Date.now()
+            });
+        })
+        .catch( error => {
+            alert('error: ', error);
+        })
     };
 
     onClick = () => {
         let { value } = this.state;
         const { getItem } = this.props;
         if (value !== ''){
-            getItem({
-                'value': this.requestToSplashbase(value),
-                'pic': true,
-                'id': Date.now()
-            });
+            this.requestToSplashbase(value);
             this.setState({
                 value: ''
             }); 

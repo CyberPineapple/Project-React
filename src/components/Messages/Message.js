@@ -1,4 +1,5 @@
 import React from 'react';
+import message from './message.module.css';
 
 export default class Message extends React.Component {
     constructor() {
